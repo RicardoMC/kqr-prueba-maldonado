@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <record id="res_company_form_sscc" model="ir.ui.view">
+        <field name="name">res.company.form.sscc</field>
+        <field name="model">res.company</field>
+        <field name="inherit_id" ref="base.view_company_form" />
+        <field name="arch" type="xml">
+            <xpath
+                expr="//page[@name='general_info']//field[@name='vat']"
+                position="after"
+            >
+                <field name="prefijo_gs1" />
+            </xpath>
+        </field>
+    </record>
+
+    <record id="stock_package_view_form_sscc" model="ir.ui.view">
+        <field name="name">stock.package.form.sscc</field>
+        <field name="model">stock.package</field>
+        <field name="inherit_id" ref="stock.stock_package_view_form" />
+        <field name="arch" type="xml">
+            <xpath expr="//div[hasclass('oe_title')]" position="after">
+                <group>
+                    <field name="sscc" readonly="1" copy="0" />
+                </group>
+            </xpath>
+        </field>
+    </record>
+
+    <record id="stock_package_view_list_sscc" model="ir.ui.view">
+        <field name="name">stock.package.list.sscc</field>
+        <field name="model">stock.package</field>
+        <field name="inherit_id" ref="stock.stock_package_view_list" />
+        <field name="arch" type="xml">
+            <xpath expr="//list/field[@name='name']" position="after">
+                <field name="sscc" readonly="1" optional="show" />
+            </xpath>
+        </field>
+    </record>
+</odoo>
