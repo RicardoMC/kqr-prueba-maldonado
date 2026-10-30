@@ -42,11 +42,7 @@ class ResCompany(models.Model):
         serial_length = 16 - len(prefix)
         if serial_length < 1:
             raise ValidationError(
-                self.env._(
-                    self.env._(
-                        "El prefijo GS1 no deja espacio para la referencia serial."
-                    )
-                )
+                self.env._("El prefijo GS1 no deja espacio para la referencia serial.")
             )
         self.env.cr.execute(
             "SELECT pg_advisory_xact_lock(%s, %s)",
